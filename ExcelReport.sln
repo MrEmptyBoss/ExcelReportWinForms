@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelReport", "ExcelReport\ExcelReport.csproj", "{469AD50F-DCDC-401D-A9FB-EF3D30362414}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{469AD50F-DCDC-401D-A9FB-EF3D30362414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469AD50F-DCDC-401D-A9FB-EF3D30362414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469AD50F-DCDC-401D-A9FB-EF3D30362414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469AD50F-DCDC-401D-A9FB-EF3D30362414}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D3FA35A-60BF-411A-B32E-95CA9CE52C78}
+	EndGlobalSection
+EndGlobal
