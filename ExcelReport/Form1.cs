@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExcelReport.Models.Excel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace ExcelReport
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                BufferExc buffer = new BufferExc();
+                buffer.infos();
+                MessageBox.Show("Готово");
         }
     }
 }
