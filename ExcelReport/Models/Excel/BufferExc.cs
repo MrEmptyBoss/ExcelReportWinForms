@@ -29,7 +29,8 @@ namespace ExcelReport.Models.Excel
 
                 spisokmustemp.Add(slovo);
             }
-            int s = spisokmustemp.FindIndex(x => x == "");
+            int column = spisokmustemp.FindIndex(x => x == "");
+            int strokss = spisokmustemp.Count / column - 1;
       
             List<string> spisok = new List<string>();
 
@@ -54,8 +55,21 @@ namespace ExcelReport.Models.Excel
                     spisok.Add(slovo);
                 }
             }
-            var ss = 1;
-            //string[] columns = 
+            string [,] tabledir = new string[strokss, column];
+
+            for (int i = 0; i < strokss; i++)
+            {
+                for (int j = 0; j < column; j++)
+                {
+                    tabledir[i, j] = spisok[j];
+                }
+                spisok.RemoveRange(0, column - 1);
+                spisok.RemoveAt(0);
+
+            };
+
+            int sd = 1;
+
 
         }
     }
