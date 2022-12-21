@@ -12,19 +12,10 @@ namespace ExcelReport.Models.Excel
 {
     class BufferExc
     {
-        public void infos(string RcT, string FamT, string NumberT, string CrochT, string TrackT, DateTime DtPT, DateTime DtDT, DateTime DtZT, DateTime DtPl)
+        List<Positons> Zayvki = new List<Positons>();
+        public void infos(string RcT, string FamT, string NumberT, string CrochT, string TrackT, DateTime DtPT, DateTime DtDT, DateTime DtZT, DateTime DtPl, DataGridView dataTable)
         {
-            string RC = RcT;
-            string Family = FamT;
-            string Number = NumberT;
-            string Srochn = CrochT;
-            DateTime Datepriema = DtPT;
-            DateTime Datedostavki = DtDT;
-            DateTime Datezakr = DtZT;
-            DateTime DatePlanovay = DtPl;
-            string TrackNumber = TrackT;
 
-            List<string> filess = new List<string>();
 
             string ish = Clipboard.GetText();
 
@@ -77,38 +68,47 @@ namespace ExcelReport.Models.Excel
                 spisok.RemoveAt(0);
 
             };
-            int col = 0;
-            for (int i = 1; i < strokss; i++)
+
+            Zayvki.Clear();
+            for (int j = 4; j < column; j++)
             {
-                int temp = Convert.ToInt32(tabledir[i, 53]);
-                col = col + temp;
-            };
+                for (int i = 1; i < strokss; i++)
+                {
+                    double dl = Convert.ToDouble(tabledir[i, 1]);
+                    double sh = Convert.ToDouble(tabledir[i, 2]);
+                    double col = Convert.ToDouble(tabledir[i, j]);
+                    double summ = dl * sh * col;
+                    double res = Math.Round(summ / 1000000, 4);
+                    Positons positons = new Positons() { RC = RcT, Family = FamT, Number = NumberT, Srochn = CrochT, TK = tabledir[0, j], Zalivka = tabledir[i, 0], Dlina = tabledir[i, 1], Shirina = tabledir[i, 2], col = tabledir[i, j], kvadr = res, Datepriema = DtPT, Datedostavki = DtDT, Datezakr = DtZT, DatePlanovay = DtPl };
+                    Zayvki.Add(positons);
 
-            MessageBox.Show($"{col}");
-
-
+                };
+            }
+            dataTable.Rows.Clear();
+            for (int i = 0; i < Zayvki.Count; i++)
+            {
+                dataTable.Rows.Add(Zayvki[i].RC, Zayvki[i].Family, Zayvki[i].Number, Zayvki[i].Srochn, Zayvki[i].TK, Zayvki[i].Datepriema, Zayvki[i].Datedostavki, Zayvki[i].Datezakr, Zayvki[i].Zalivka, Zayvki[i].Dlina, Zayvki[i].Shirina, Zayvki[i].col, Zayvki[i].kvadr, Zayvki[i].DatePlanovay, 0);
+            }
 
         }
     }
 
-    class Positons
+    public class Positons
     {
-        string RC;
-        string Family;
-        string Number;
-        string Srochn;
-        string TK;
-        DateTime Datepriema;
-        DateTime Datedostavki;
-        DateTime Datezakr;
-        int Zalivka;
-        int Dlina;
-        int Shirina;
-        int col;
-        int kvadr;
-        DateTime DatePlanovay;
-        string TrackNumber;
-
-
+        public string RC;
+        public string Family;
+        public string Number;
+        public string Srochn;
+        public string TK;
+        public DateTime Datepriema;
+        public DateTime Datedostavki;
+        public DateTime Datezakr;
+        public string Zalivka;
+        public string Dlina;
+        public string Shirina;
+        public string col;
+        public double kvadr;
+        public DateTime DatePlanovay;
+        //public string TrackNumber;
     }
 }

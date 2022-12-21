@@ -35,7 +35,7 @@ namespace ExcelReport
                 DateTime DatePlanovay = Convert.ToDateTime(DtPlanovText.Text);
                 string TrackNumber = TrackText.Text;
                 BufferExc buffer = new BufferExc();
-                buffer.infos(RC, Family, Number, Srochn, TrackNumber, Datepriema, Datedostavki, Datezakr, DatePlanovay);
+                buffer.infos(RC, Family, Number, Srochn, TrackNumber, Datepriema, Datedostavki, Datezakr, DatePlanovay, dataGridView1);
                 MessageBox.Show("Готово");
             }
             catch (Exception ex)//если в try возникнет исключение, обрабатываем его ниже в catch, к примеру выводим сообщение с текстом ошибки
