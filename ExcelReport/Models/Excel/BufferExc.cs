@@ -31,7 +31,7 @@ namespace ExcelReport.Models.Excel
             }
             int column = spisokmustemp.FindIndex(x => x == "");
             int strokss = spisokmustemp.Count / column - 1;
-      
+
             List<string> spisok = new List<string>();
 
             for (int i = 0; i < data.Length; i++)
@@ -55,7 +55,7 @@ namespace ExcelReport.Models.Excel
                     spisok.Add(slovo);
                 }
             }
-            string [,] tabledir = new string[strokss, column];
+            string[,] tabledir = new string[strokss, column];
 
             for (int i = 0; i < strokss; i++)
             {
@@ -67,10 +67,38 @@ namespace ExcelReport.Models.Excel
                 spisok.RemoveAt(0);
 
             };
+            int col = 0;
+            for (int i = 1; i < strokss; i++)
+            {
+                int temp = Convert.ToInt32(tabledir[i, 53]);
+                col = col + temp;
+            };
 
-            int sd = 1;
+            MessageBox.Show($"{col}");
+
 
 
         }
+    }
+
+    class Positons
+    {
+        string RC;
+        string Family;
+        string Number;
+        string Srochn;
+        string TK;
+        DateTime Datepriema;
+        DateTime Datedostavki;
+        DateTime Datezakr;
+        int Zalivka;
+        int Dlina;
+        int Shirina;
+        int col;
+        int kvadr;
+        DateTime DatePlanovay;
+        string TrackNumber;
+
+
     }
 }
