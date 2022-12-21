@@ -12,8 +12,18 @@ namespace ExcelReport.Models.Excel
 {
     class BufferExc
     {
-        public void infos()
+        public void infos(string RcT, string FamT, string NumberT, string CrochT, string TrackT, DateTime DtPT, DateTime DtDT, DateTime DtZT, DateTime DtPl)
         {
+            string RC = RcT;
+            string Family = FamT;
+            string Number = NumberT;
+            string Srochn = CrochT;
+            DateTime Datepriema = DtPT;
+            DateTime Datedostavki = DtDT;
+            DateTime Datezakr = DtZT;
+            DateTime DatePlanovay = DtPl;
+            string TrackNumber = TrackT;
+
             List<string> filess = new List<string>();
 
             string ish = Clipboard.GetText();
