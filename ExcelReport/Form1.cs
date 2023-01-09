@@ -14,6 +14,7 @@ namespace ExcelReport
 {
     public partial class Form1 : Form
     {
+        List<Tr> trs = new List<Tr>();
         
         public Form1()
         {
@@ -34,9 +35,12 @@ namespace ExcelReport
                 DateTime Datezakr = Convert.ToDateTime(DtZText.Text);
                 DateTime DatePlanovay = Convert.ToDateTime(DtPlanovText.Text);
                 string TrackNumber = TrackText.Text;
+                vd(TrackNumber);
                 BufferExc buffer = new BufferExc();
-                buffer.infos(RC, Family, Number, Srochn, TrackNumber, Datepriema, Datedostavki, Datezakr, DatePlanovay, dataGridView1);
+                buffer.infos(RC, Family, Number, Srochn, TrackNumber, Datepriema, Datedostavki, Datezakr, DatePlanovay, dataGridView1, trs);
                 MessageBox.Show("Готово");
+                label10.Text = buffer.Ress();
+                trs.Clear();
             }
             catch (Exception ex)//если в try возникнет исключение, обрабатываем его ниже в catch, к примеру выводим сообщение с текстом ошибки
             {
@@ -45,6 +49,24 @@ namespace ExcelReport
             
 
             
+        }
+
+        public void vd(string Tracks)
+        {
+            List<string> spisok = new List<string>();
+            String[] words = Tracks.Split(new char[] { ' ', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < words.Length; i++)
+            {
+                spisok.Add(words[i]);
+            }
+            for (int i = 0; i < words.Length/2; i++)
+            {
+                Tr tr = new Tr() { TK = spisok[0], NumberTr = spisok[1]};
+                trs.Add(tr);
+                spisok.RemoveRange(0,2);
+
+
+            }
         }
     }
 }
